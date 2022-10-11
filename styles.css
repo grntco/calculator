@@ -1,0 +1,32 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.calc-container {
+    width: 384px;
+    background-color: lightblue;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.display {
+    height: 64px;
+}
+
+.btn-container {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+button {
+    border: 1px solid grey;
+    background-color: rgb(234, 184, 92);
+    height: 64px;
+    border-radius: 4px;
+}
