@@ -1,36 +1,65 @@
 * {
     font-family: 'Futura';
+    font-size: 20px;
+    color: white;
 }
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
     align-items: center;
     height: 100vh;
+    background-image: url(pexels-kai-pilger-1341279.jpg);
+    background-size: 100vh;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.parenthetical {
+    margin: 0px 0px 48px 0px;
 }
 
 .calc-container {
-    width: 384px;
-    background-color: lightblue;
-    padding: 8px;
+    min-width: 384px;
+    background-image: linear-gradient(326deg, rgba(41, 40, 56, 0.8) 50%, rgba(61, 61, 61, 0.8) 100%);
+    backdrop-filter: blur(5px);
+    padding: 24px 16px;
     border-radius: 8px;
 }
 
 .display {
-    height: 64px;
+    background-image: linear-gradient(180deg, rgba(99, 98, 113, 0.433) 0%, rgba(61, 61, 61, 0.483) 100%);
+    font-size: 48px;
+    text-align: right;
+    padding: 8px 8px;
+    border-radius: 4px 4px 0px 0px;
+    backdrop-filter: blur(2px);
 }
 
 .btn-container {
     display: grid;
-    gap: 12px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    border: 0px solid rgba(239, 238, 238, 0.188);
+    border-radius: 4px;
 }
 
 button {
-    border: 1px solid grey;
-    background-color: rgb(234, 184, 92);
+    border: 1px solid rgba(239, 238, 238, 0.188);
+    background-image: linear-gradient(to right, rgba(87, 50, 140, 0.9) 0%, rgba(77, 29, 145, 0.9) 50%, rgba(88, 16, 188, .8) 100%);
     height: 64px;
-    border-radius: 4px;
+}
+
+button:hover {
+    background-color: rgb(220, 119, 4);
 }
 
 .all-clear-btn {
@@ -39,4 +68,5 @@ button {
 
 .equals-btn {
     grid-column: 3 / -1;
+    background-image: linear-gradient(to right, rgba(226, 139, 45, 0.9) 0%, rgba(224, 125, 18, 0.9) 50%, rgba(224, 149, 43, 0.9) 100%);
 }
