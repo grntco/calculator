@@ -34,7 +34,6 @@ function operate(operator, x, y) {
 }
 
 //Number and decimal buttons to populate display
-
 let displayValue = '';
 
 document.getElementById('0-btn').addEventListener('click', function(){
@@ -99,10 +98,10 @@ document.getElementById('all-clear-btn').addEventListener('click', function(){
     document.getElementById('display').textContent = displayValue;
 });
 
-document.getElementById('plus-btn').addEventListener('click', function(){
-    let num1 = displayValue;
-    let num2 = 
+// document.getElementById('plus-btn').addEventListener('click', function(){
+//     let num1 = displayValue;
+//     let num2 = 
     
     
-    operate('+', x, );
-})
+//     operate('+', x, );
+// })
