@@ -35,6 +35,10 @@ function operate(operator, x, y) {
 
 //Number and decimal buttons to populate display
 let displayValue = '';
+let firstNum = 0;
+let secondNum = 0;
+let operator = '';
+
 
 document.getElementById('0-btn').addEventListener('click', function(){
     displayValue += '0';
@@ -98,10 +102,34 @@ document.getElementById('all-clear-btn').addEventListener('click', function(){
     document.getElementById('display').textContent = displayValue;
 });
 
-// document.getElementById('plus-btn').addEventListener('click', function(){
-//     let num1 = displayValue;
-//     let num2 = 
-    
-    
-//     operate('+', x, );
-// })
+//Operator buttons to assign firstNum a value and reset the display value
+document.getElementById('plus-btn').addEventListener('click', function(){
+    operator = '+';   
+    firstNum = +displayValue;
+    displayValue = '';
+});
+
+document.getElementById('subtract-btn').addEventListener('click', function(){
+    operator = '-';   
+    firstNum = +displayValue;
+    displayValue = '';
+});
+
+document.getElementById('multiply-btn').addEventListener('click', function(){
+    operator = '*';   
+    firstNum = +displayValue;
+    displayValue = '';
+});
+
+document.getElementById('divide-btn').addEventListener('click', function(){
+    operator = '/';   
+    firstNum = +displayValue;
+    displayValue = '';
+});
+//Equals button to assign secondNum a value and call operate function
+
+document.getElementById('equals-btn').addEventListener('click', function(){
+    secondNum = +displayValue;
+    displayValue = operate(operator, firstNum, secondNum);
+    document.getElementById('display').textContent = displayValue;
+});
