@@ -102,6 +102,13 @@ document.getElementById('all-clear-btn').addEventListener('click', function(){
     document.getElementById('display').textContent = displayValue;
 });
 
+//Backspace buttton to delete last character in display value
+
+document.getElementById('backspace-btn').addEventListener('click', function(){
+    displayValue = displayValue.slice(0, -1);
+    document.getElementById('display').textContent = displayValue;
+});
+
 //Operator buttons to assign firstNum a value and reset the display value
 document.getElementById('plus-btn').addEventListener('click', function(){
     operator = '+';   
@@ -126,6 +133,7 @@ document.getElementById('divide-btn').addEventListener('click', function(){
     firstNum = +displayValue;
     displayValue = '';
 });
+
 //Equals button to assign secondNum a value and call operate function
 
 document.getElementById('equals-btn').addEventListener('click', function(){
