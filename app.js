@@ -33,12 +33,14 @@ function operate(operator, x, y) {
     }
 }
 
-//Number and decimal buttons to populate display
+//Essential variables
+
 let displayValue = '';
 let firstNum = 0;
 let secondNum = 0;
 let operator = '';
 
+//Number buttons to populate display
 
 document.getElementById('0-btn').addEventListener('click', function(){
     displayValue += '0';
@@ -90,9 +92,14 @@ document.getElementById('9-btn').addEventListener('click', function(){
     document.getElementById('display').textContent = displayValue;
 });
 
-document.getElementById('decimal-btn').addEventListener('click', function(){
+//Decimal button, which can only be clicked once before an operator is clicked
+
+let decimalBtn = document.getElementById('decimal-btn');
+
+decimalBtn.addEventListener('click', function(){
     displayValue += '.';
     document.getElementById('display').textContent = displayValue;
+    decimalBtn.disabled = true;
 });
 
 //All clear button to clear display and empty displayValue
@@ -100,11 +107,13 @@ document.getElementById('decimal-btn').addEventListener('click', function(){
 document.getElementById('all-clear-btn').addEventListener('click', function(){
     displayValue = '';
     document.getElementById('display').textContent = displayValue;
+    decimalBtn.disabled = false;
 });
 
 //Backspace buttton to delete last character in display value
 
 document.getElementById('backspace-btn').addEventListener('click', function(){
+    if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
     displayValue = displayValue.slice(0, -1);
     document.getElementById('display').textContent = displayValue;
 });
@@ -114,24 +123,28 @@ document.getElementById('plus-btn').addEventListener('click', function(){
     operator = '+';   
     firstNum = +displayValue;
     displayValue = '';
+    decimalBtn.disabled = false;
 });
 
 document.getElementById('subtract-btn').addEventListener('click', function(){
     operator = '-';   
     firstNum = +displayValue;
     displayValue = '';
+    decimalBtn.disabled = false;
 });
 
 document.getElementById('multiply-btn').addEventListener('click', function(){
     operator = '*';   
     firstNum = +displayValue;
     displayValue = '';
+    decimalBtn.disabled = false;
 });
 
 document.getElementById('divide-btn').addEventListener('click', function(){
     operator = '/';   
     firstNum = +displayValue;
     displayValue = '';
+    decimalBtn.disabled = false;
 });
 
 //Equals button to assign secondNum a value and call operate function
@@ -140,4 +153,5 @@ document.getElementById('equals-btn').addEventListener('click', function(){
     secondNum = +displayValue;
     displayValue = operate(operator, firstNum, secondNum);
     document.getElementById('display').textContent = displayValue;
+    decimalBtn.disabled = false;
 });
