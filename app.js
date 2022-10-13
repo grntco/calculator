@@ -28,8 +28,6 @@ function operate(operator, x, y) {
             return multiply(x, y);
         case '/':
             return divide(x, y);
-        default:
-            return "Something ain't right.";
     }
 }
 
@@ -150,8 +148,12 @@ document.getElementById('divide-btn').addEventListener('click', function(){
 //Equals button to assign secondNum a value and call operate function
 
 document.getElementById('equals-btn').addEventListener('click', function(){
+    if (displayValue === '') {
+        
+    }
     secondNum = +displayValue;
     displayValue = operate(operator, firstNum, secondNum);
     document.getElementById('display').textContent = displayValue;
     decimalBtn.disabled = false;
 });
+
