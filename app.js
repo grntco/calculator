@@ -151,13 +151,17 @@ document.getElementById('divide-btn').addEventListener('click', function(){
 
 //All clear button to clear display and empty variables
 
-document.getElementById('all-clear-btn').addEventListener('click', function(){
+function allClear() {
     displayValue = '';
     firstNum = 0;
     secondNum = 0;
     operator = '';
     document.getElementById('display').textContent = displayValue;
     decimalBtn.disabled = false;
+}
+
+document.getElementById('all-clear-btn').addEventListener('click', function() {
+    allClear();
 });
 
 //Backspace buttton to delete last character in display value
@@ -171,9 +175,15 @@ document.getElementById('backspace-btn').addEventListener('click', function(){
 //Equals button to assign secondNum a value and call operate function
 
 document.getElementById('equals-btn').addEventListener('click', function(){
-    secondNum = +displayValue;
-    displayValue = operate(operator, firstNum, secondNum);
-    document.getElementById('display').textContent = displayValue;
-    decimalBtn.disabled = false;
+    if (operator !== '') {
+        secondNum = +displayValue;
+        if (secondNum === 0) {
+            alert("You can't divide by zero!");
+            allClear();
+        }
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+        decimalBtn.disabled = false;
+    }
 });
 
