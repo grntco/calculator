@@ -180,10 +180,17 @@ document.getElementById('equals-btn').addEventListener('click', function(){
         if (secondNum === 0) {
             alert("You can't divide by zero!");
             allClear();
+        } else {
+            displayValue = operate(operator, firstNum, secondNum);
+            document.getElementById('display').textContent = displayValue;
+            decimalBtn.disabled = false;
         }
-        displayValue = operate(operator, firstNum, secondNum);
-        document.getElementById('display').textContent = displayValue;
-        decimalBtn.disabled = false;
     }
 });
+
+//displayValue cannot be more than 12 characters long
+
+// if (displayValue.length > 12) {
+//     displayValue = displayValue.substring(0,10);
+// }
 
