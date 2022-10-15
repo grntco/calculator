@@ -100,22 +100,6 @@ decimalBtn.addEventListener('click', function(){
     decimalBtn.disabled = true;
 });
 
-//All clear button to clear display and empty displayValue
-
-document.getElementById('all-clear-btn').addEventListener('click', function(){
-    displayValue = '';
-    document.getElementById('display').textContent = displayValue;
-    decimalBtn.disabled = false;
-});
-
-//Backspace buttton to delete last character in display value
-
-document.getElementById('backspace-btn').addEventListener('click', function(){
-    if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
-    displayValue = displayValue.slice(0, -1);
-    document.getElementById('display').textContent = displayValue;
-});
-
 //Operator buttons to assign firstNum a value and reset the display value
 document.getElementById('plus-btn').addEventListener('click', function(){
     if (operator !== '') {
@@ -163,6 +147,25 @@ document.getElementById('divide-btn').addEventListener('click', function(){
     firstNum = +displayValue;
     displayValue = '';
     decimalBtn.disabled = false;
+});
+
+//All clear button to clear display and empty variables
+
+document.getElementById('all-clear-btn').addEventListener('click', function(){
+    displayValue = '';
+    firstNum = 0;
+    secondNum = 0;
+    operator = '';
+    document.getElementById('display').textContent = displayValue;
+    decimalBtn.disabled = false;
+});
+
+//Backspace buttton to delete last character in display value
+
+document.getElementById('backspace-btn').addEventListener('click', function(){
+    if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
+    displayValue = displayValue.slice(0, -1);
+    document.getElementById('display').textContent = displayValue;
 });
 
 //Equals button to assign secondNum a value and call operate function
