@@ -241,11 +241,11 @@ document.getElementById('equals-btn').addEventListener('click', function(){
 // }
 
 
-function limitDisplay(displayValue) {
-    if (displayValue.length > 12) {
-        return displayValue.slice(0, 12);
-    }
-}
+// function limitDisplay(displayValue) {
+//     if (displayValue.length > 12) {
+//         return displayValue.slice(0, 12);
+//     }
+// }
 
 //displayValue cannot be more than 12 characters long
 
