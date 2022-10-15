@@ -118,6 +118,11 @@ document.getElementById('backspace-btn').addEventListener('click', function(){
 
 //Operator buttons to assign firstNum a value and reset the display value
 document.getElementById('plus-btn').addEventListener('click', function(){
+    if (operator !== '') {
+        secondNum = +displayValue;
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+    }
     operator = '+';   
     firstNum = +displayValue;
     displayValue = '';
@@ -125,6 +130,11 @@ document.getElementById('plus-btn').addEventListener('click', function(){
 });
 
 document.getElementById('subtract-btn').addEventListener('click', function(){
+    if (operator !== '') {
+        secondNum = +displayValue;
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+    }
     operator = '-';   
     firstNum = +displayValue;
     displayValue = '';
@@ -132,6 +142,11 @@ document.getElementById('subtract-btn').addEventListener('click', function(){
 });
 
 document.getElementById('multiply-btn').addEventListener('click', function(){
+    if (operator !== '') {
+        secondNum = +displayValue;
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+    }
     operator = '*';   
     firstNum = +displayValue;
     displayValue = '';
@@ -139,6 +154,11 @@ document.getElementById('multiply-btn').addEventListener('click', function(){
 });
 
 document.getElementById('divide-btn').addEventListener('click', function(){
+    if (operator !== '') {
+        secondNum = +displayValue;
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+    }
     operator = '/';   
     firstNum = +displayValue;
     displayValue = '';
@@ -148,9 +168,6 @@ document.getElementById('divide-btn').addEventListener('click', function(){
 //Equals button to assign secondNum a value and call operate function
 
 document.getElementById('equals-btn').addEventListener('click', function(){
-    if (displayValue === '') {
-        
-    }
     secondNum = +displayValue;
     displayValue = operate(operator, firstNum, secondNum);
     document.getElementById('display').textContent = displayValue;
