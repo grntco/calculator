@@ -228,6 +228,7 @@ document.getElementById('equals-btn').addEventListener('click', function(){
         } else {
             displayValue = operate(operator, firstNum, secondNum);
             document.getElementById('display').textContent = displayValue;
+            displayValue = displayValue.toString();
             decimalBtn.disabled = false;
             operator = '';
         }
