@@ -145,26 +145,14 @@ decimalBtn.addEventListener('click', function(){
 });
 
 //Operator buttons to assign firstNum a value and reset the display value
-document.getElementById('plus-btn').addEventListener('click', function(){
-    if (operator !== '') {
-        secondNum = +displayValue;
-        displayValue = operate(operator, firstNum, secondNum);
 
-        document.getElementById('display').textContent = displayValue;
-    }
-    operator = '+';   
-    firstNum = +displayValue;
-    displayValue = '';
-    decimalBtn.disabled = false;
-});
-
-document.getElementById('subtract-btn').addEventListener('click', function(){
+document.getElementById('divide-btn').addEventListener('click', function(){
     if (operator !== '') {
         secondNum = +displayValue;
         displayValue = operate(operator, firstNum, secondNum);
         document.getElementById('display').textContent = displayValue;
     }
-    operator = '-';   
+    operator = '/';   
     firstNum = +displayValue;
     displayValue = '';
     decimalBtn.disabled = false;
@@ -182,13 +170,25 @@ document.getElementById('multiply-btn').addEventListener('click', function(){
     decimalBtn.disabled = false;
 });
 
-document.getElementById('divide-btn').addEventListener('click', function(){
+document.getElementById('subtract-btn').addEventListener('click', function(){
     if (operator !== '') {
         secondNum = +displayValue;
         displayValue = operate(operator, firstNum, secondNum);
         document.getElementById('display').textContent = displayValue;
     }
-    operator = '/';   
+    operator = '-';  
+    firstNum = +displayValue;
+    displayValue = '';
+    decimalBtn.disabled = false;
+});
+
+document.getElementById('plus-btn').addEventListener('click', function(){
+    if (operator !== '') {
+        secondNum = +displayValue;
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+    }
+    operator = '+';   
     firstNum = +displayValue;
     displayValue = '';
     decimalBtn.disabled = false;
@@ -229,6 +229,7 @@ document.getElementById('equals-btn').addEventListener('click', function(){
             displayValue = operate(operator, firstNum, secondNum);
             document.getElementById('display').textContent = displayValue;
             decimalBtn.disabled = false;
+            operator = '';
         }
     }
 });
