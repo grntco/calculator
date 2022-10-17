@@ -1,3 +1,10 @@
+//Variables
+
+let displayValue = '';
+let firstNum = 0;
+let secondNum = 0;
+let operator = '';
+
 // Four basic math functinos
 
 function add(a, b) {
@@ -41,12 +48,16 @@ function operate(operator, x, y) {
     }
 }
 
-//Essential variables
+//All clear button to clear display and empty variables
 
-let displayValue = '';
-let firstNum = 0;
-let secondNum = 0;
-let operator = '';
+function allClear() {
+    displayValue = '';
+    firstNum = 0;
+    secondNum = 0;
+    operator = '';
+    document.getElementById('display').textContent = displayValue;
+    decimalBtn.disabled = false;
+}
 
 //Number buttons to populate display
 
@@ -204,17 +215,6 @@ document.getElementById('plus-btn').addEventListener('click', function(){
     decimalBtn.disabled = false;
 });
 
-//All clear button to clear display and empty variables
-
-function allClear() {
-    displayValue = '';
-    firstNum = 0;
-    secondNum = 0;
-    operator = '';
-    document.getElementById('display').textContent = displayValue;
-    decimalBtn.disabled = false;
-}
-
 document.getElementById('all-clear-btn').addEventListener('click', function() {
     allClear();
 });
@@ -239,23 +239,8 @@ document.getElementById('equals-btn').addEventListener('click', function(){
             displayValue = operate(operator, firstNum, secondNum);
             document.getElementById('display').textContent = displayValue;
             displayValue = displayValue.toString();
-            decimalBtn.disabled = false;
+            displayValue.includes('.') ? decimalBtn.disabled = true : decimalBtn.disabled = false;
             operator = '';
         }
     }
 });
-
-
-
-// function limitDisplay(displayValue) {
-//     if (displayValue.length > 12) {
-//         return displayValue.slice(0, 12);
-//     }
-// }
-
-//displayValue cannot be more than 12 characters long
-
-// if (displayValue.length > 12) {
-//     displayValue = displayValue.substring(0,10);
-// }
-
