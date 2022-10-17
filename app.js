@@ -16,18 +16,28 @@ function divide(a, b) {
     return a / b;
 }
 
+//Round to three decimal places if applicable (added to operate function)
+
+function round(answer) {
+    if (answer.toString().includes('.')) {
+        return answer.toFixed(3)
+    } else {
+        return answer;
+    }
+}
+
 //Function to call one of the basic math functions upon a given operator
 
 function operate(operator, x, y) {
     switch (operator) {
         case '+':
-            return add(x, y);
+            return round(add(x, y));
         case '-':
-            return subtract(x, y);
+            return round(subtract(x, y));
         case '*':
-            return multiply(x, y);
+            return round(multiply(x, y));
         case '/':
-            return divide(x, y);
+            return round(divide(x, y));
     }
 }
 
@@ -235,12 +245,6 @@ document.getElementById('equals-btn').addEventListener('click', function(){
     }
 });
 
-// function round(answer) {
-//     let decimalIndex = answer.toString().indexOf('.');
-//     if ((decimalIndex > -1) && (answer[decimalIndex + 4] !== undefined)) {
-//         return answer.parseFloat().toFixed(3);
-//     }
-// }
 
 
 // function limitDisplay(displayValue) {
