@@ -20,7 +20,7 @@ function divide(a, b) {
 
 function round(answer) {
     if (answer.toString().includes('.')) {
-        return answer.toFixed(3)
+        return parseFloat(answer.toFixed(3));
     } else {
         return answer;
     }
