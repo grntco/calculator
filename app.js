@@ -5,24 +5,6 @@ let firstNum = 0;
 let secondNum = 0;
 let operator = '';
 
-// Four basic math functinos
-
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
-
 //Round to three decimal places if applicable (added to operate function)
 
 function round(answer) {
@@ -38,13 +20,13 @@ function round(answer) {
 function operate(operator, x, y) {
     switch (operator) {
         case '+':
-            return round(add(x, y));
+            return round(x + y);
         case '-':
-            return round(subtract(x, y));
+            return round(x - y);
         case '*':
-            return round(multiply(x, y));
+            return round(x * y);
         case '/':
-            return round(divide(x, y));
+            return round(x / y);
     }
 }
 
