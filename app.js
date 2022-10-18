@@ -49,25 +49,12 @@ numberBtns.forEach(button => {
     button.addEventListener('click', function() {
         if (displayValue.length < 12) {
             displayValue += button.textContent;
+            if (displayValue.includes('.')) { decimalBtn.disabled = true };
             document.getElementById('display').textContent = displayValue;
         } else if (displayValue.length > 12) {
             alert("You've reached the number character limit.");
         }
     });
-});
-
-//Decimal button, which can only be clicked once before an operator is clicked
-
-let decimalBtn = document.getElementById('decimal-btn');
-
-decimalBtn.addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '.';
-        document.getElementById('display').textContent = displayValue;
-        decimalBtn.disabled = true;
-    } else {
-        alert("You've reached the number character limit.")
-    }
 });
 
 //Operator buttons to assign firstNum a value and reset the display value
