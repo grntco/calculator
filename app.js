@@ -1,4 +1,6 @@
-//Variables
+//VARIABLES
+
+//Values
 let displayValue = '';
 let firstNum = 0;
 let secondNum = 0;
@@ -7,9 +9,14 @@ let operator = '';
 //Buttons
 const numberBtns = document.querySelectorAll('.number-btn');
 const decimalBtn = document.getElementById('decimal-btn');
-const operators = document.querySelectorAll('.operator');
+const operatorBtns = document.querySelectorAll('.operator');
+const backspaceBtn = document.getElementById('backspace-btn');
+const allClearBtn = document.getElementById('all-clear-btn');
+const equalsBtn = document.getElementById('equals-btn');
 
-//Round to three decimal places if applicable (added to operate function)
+//FUNCTIONS
+
+//Rounds to three decimal places if applicable
 function round(answer) {
     if (answer.toString().includes('.')) {
         return parseFloat(answer.toFixed(3));
@@ -18,7 +25,7 @@ function round(answer) {
     }
 }
 
-//Function to call one of the basic math functions upon a given operator
+//Performs a math operation based on a given operator
 function operate(operator, x, y) {
     switch (operator) {
         case '+':
@@ -32,7 +39,7 @@ function operate(operator, x, y) {
     }
 }
 
-//All clear button to clear display and empty variables
+//Empties values, clears display, and re-enables decimal button
 function allClear() {
     displayValue = '';
     firstNum = 0;
@@ -41,6 +48,8 @@ function allClear() {
     document.getElementById('display').textContent = displayValue;
     decimalBtn.disabled = false;
 }
+
+//BUTTON EVENT LISTENERS
 
 //Number buttons append their number to the current displayValue
 numberBtns.forEach(button => {
@@ -56,7 +65,7 @@ numberBtns.forEach(button => {
 });
 
 //Operator buttons assign firstNum, operator, reset the display value, and re-enable decimal button
-operators.forEach(button => {
+operatorBtns.forEach(button => {
     button.addEventListener('click', function() {
         if (operator !== '') {
             secondNum = +displayValue;
@@ -70,21 +79,20 @@ operators.forEach(button => {
     });
 });
 
-
-//AC button clears all values
-document.getElementById('all-clear-btn').addEventListener('click', function() {
+//AC button calls allClear function
+allClearBtn.addEventListener('click', function() {
     allClear();
 });
 
-//Backspace buttton to delete last character in display value
-document.getElementById('backspace-btn').addEventListener('click', function(){
+//Backspace buttton deletes the last character in the display
+backspaceBtn.addEventListener('click', function(){
     if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
     displayValue = displayValue.slice(0, -1);
     document.getElementById('display').textContent = displayValue;
 });
 
-//Equals button to assign secondNum a value and call operate function
-document.getElementById('equals-btn').addEventListener('click', function(){
+//Equals button assigns secondNum a value and calls operate function
+equalsBtn.addEventListener('click', function(){
     if (operator !== '') {
         secondNum = +displayValue;
         if ((operator === '/') && (secondNum === 0)) {
