@@ -21,11 +21,11 @@ function operate(operator, x, y) {
     switch (operator) {
         case '+':
             return round(x + y);
-        case '-':
+        case '—':
             return round(x - y);
-        case '*':
+        case '×':
             return round(x * y);
-        case '/':
+        case '÷':
             return round(x / y);
     }
 }
@@ -58,54 +58,22 @@ numberBtns.forEach(button => {
     });
 });
 
-//Operator buttons to assign firstNum a value and reset the display value
+//Operator buttons assign firstNum, operator, reset the display value, and re-enable decimal button
 
-document.getElementById('divide-btn').addEventListener('click', function(){
-    if (operator !== '') {
-        secondNum = +displayValue;
-        displayValue = operate(operator, firstNum, secondNum);
-        document.getElementById('display').textContent = displayValue;
-    }
-    operator = '/';   
-    firstNum = +displayValue;
-    displayValue = '';
-    decimalBtn.disabled = false;
-});
+const operators = document.querySelectorAll('.operator');
 
-document.getElementById('multiply-btn').addEventListener('click', function(){
-    if (operator !== '') {
-        secondNum = +displayValue;
-        displayValue = operate(operator, firstNum, secondNum);
-        document.getElementById('display').textContent = displayValue;
-    }
-    operator = '*';   
-    firstNum = +displayValue;
-    displayValue = '';
-    decimalBtn.disabled = false;
-});
-
-document.getElementById('subtract-btn').addEventListener('click', function(){
-    if (operator !== '') {
-        secondNum = +displayValue;
-        displayValue = operate(operator, firstNum, secondNum);
-        document.getElementById('display').textContent = displayValue;
-    }
-    operator = '-';  
-    firstNum = +displayValue;
-    displayValue = '';
-    decimalBtn.disabled = false;
-});
-
-document.getElementById('plus-btn').addEventListener('click', function(){
-    if (operator !== '') {
-        secondNum = +displayValue;
-        displayValue = operate(operator, firstNum, secondNum);
-        document.getElementById('display').textContent = displayValue;
-    }
-    operator = '+';   
-    firstNum = +displayValue;
-    displayValue = '';
-    decimalBtn.disabled = false;
+operators.forEach(button => {
+    button.addEventListener('click', function() {
+        if (operator !== '') {
+            secondNum = +displayValue;
+            displayValue = operate(operator, firstNum, secondNum);
+            document.getElementById('display').textContent = displayValue;
+        }
+        operator = button.textContent;   
+        firstNum = +displayValue;
+        displayValue = '';
+        decimalBtn.disabled = false;
+    });
 });
 
 document.getElementById('all-clear-btn').addEventListener('click', function() {
