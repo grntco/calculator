@@ -1,3 +1,5 @@
-# This is a simple calculator project.
+# Spectacular Space Calculator
 
-It was the capstone project for The Odin Project Foundations course. It combines my knowledge thus far of HTML, CSS, and Javascript.
+This is the capstone project for The Odin Project Foundations course. I used my knowledge of HTML, CSS, and Javascript to create a simple functional calculator.
+
+Live demo: 
