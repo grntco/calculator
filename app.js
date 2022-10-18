@@ -44,6 +44,7 @@ function allClear() {
 //Number buttons append their number to the current displayValue
 
 const numberBtns = document.querySelectorAll('.number-btn');
+const decimalBtn = document.getElementById('decimal-btn');
 
 numberBtns.forEach(button => {
     button.addEventListener('click', function() {
