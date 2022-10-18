@@ -41,96 +41,19 @@ function allClear() {
     decimalBtn.disabled = false;
 }
 
-//Number buttons to populate display
+//Number buttons append their number to the current displayValue
 
-document.getElementById('0-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '0';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
+const numberBtns = document.querySelectorAll('.number-btn');
 
-document.getElementById('1-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '1';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('2-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '2';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('3-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '3';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('4-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '4';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('5-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '5';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('6-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '6';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('7-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '7';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('8-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '8';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
-});
-
-document.getElementById('9-btn').addEventListener('click', function(){
-    if (displayValue.length < 12) {
-        displayValue += '9';
-        document.getElementById('display').textContent = displayValue;
-    } else {
-        alert("You've reached the number character limit.")
-    }
+numberBtns.forEach(button => {
+    button.addEventListener('click', function() {
+        if (displayValue.length < 12) {
+            displayValue += button.textContent;
+            document.getElementById('display').textContent = displayValue;
+        } else if (displayValue.length > 12) {
+            alert("You've reached the number character limit.");
+        }
+    });
 });
 
 //Decimal button, which can only be clicked once before an operator is clicked
