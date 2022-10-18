@@ -1,12 +1,15 @@
 //Variables
-
 let displayValue = '';
 let firstNum = 0;
 let secondNum = 0;
 let operator = '';
 
-//Round to three decimal places if applicable (added to operate function)
+//Buttons
+const numberBtns = document.querySelectorAll('.number-btn');
+const decimalBtn = document.getElementById('decimal-btn');
+const operators = document.querySelectorAll('.operator');
 
+//Round to three decimal places if applicable (added to operate function)
 function round(answer) {
     if (answer.toString().includes('.')) {
         return parseFloat(answer.toFixed(3));
@@ -16,7 +19,6 @@ function round(answer) {
 }
 
 //Function to call one of the basic math functions upon a given operator
-
 function operate(operator, x, y) {
     switch (operator) {
         case '+':
@@ -31,7 +33,6 @@ function operate(operator, x, y) {
 }
 
 //All clear button to clear display and empty variables
-
 function allClear() {
     displayValue = '';
     firstNum = 0;
@@ -42,10 +43,6 @@ function allClear() {
 }
 
 //Number buttons append their number to the current displayValue
-
-const numberBtns = document.querySelectorAll('.number-btn');
-const decimalBtn = document.getElementById('decimal-btn');
-
 numberBtns.forEach(button => {
     button.addEventListener('click', function() {
         if (displayValue.length < 12) {
@@ -59,9 +56,6 @@ numberBtns.forEach(button => {
 });
 
 //Operator buttons assign firstNum, operator, reset the display value, and re-enable decimal button
-
-const operators = document.querySelectorAll('.operator');
-
 operators.forEach(button => {
     button.addEventListener('click', function() {
         if (operator !== '') {
@@ -76,12 +70,13 @@ operators.forEach(button => {
     });
 });
 
+
+//AC button clears all values
 document.getElementById('all-clear-btn').addEventListener('click', function() {
     allClear();
 });
 
 //Backspace buttton to delete last character in display value
-
 document.getElementById('backspace-btn').addEventListener('click', function(){
     if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
     displayValue = displayValue.slice(0, -1);
@@ -89,7 +84,6 @@ document.getElementById('backspace-btn').addEventListener('click', function(){
 });
 
 //Equals button to assign secondNum a value and call operate function
-
 document.getElementById('equals-btn').addEventListener('click', function(){
     if (operator !== '') {
         secondNum = +displayValue;
