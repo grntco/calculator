@@ -16,6 +16,38 @@ const equalsBtn = document.getElementById('equals-btn');
 
 //FUNCTIONS
 
+//Appends a new number to the display
+function appendNumber(number) {
+    if (displayValue.length < 12) {
+        displayValue += number;
+        if (displayValue.includes('.')) { decimalBtn.disabled = true };
+        document.getElementById('display').textContent = displayValue;
+    } else {
+        alert("You've reached the number character limit.");
+    }
+}
+
+//Deletes a the previously entered character
+function deleteLastChar() {
+    if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
+    displayValue = displayValue.slice(0, -1);
+    document.getElementById('display').textContent = displayValue;
+}
+
+//Assigns operator a value
+
+function assignOperator(symbol) { //THIS NEEDS HELPPPPPPPPPPP
+    if (operator !== '') {
+        secondNum = +displayValue;
+        displayValue = operate(operator, firstNum, secondNum);
+        document.getElementById('display').textContent = displayValue;
+    }
+    operator = symbol;
+    firstNum = +displayValue;
+    displayValue = '';
+    decimalBtn.disabled = false;
+}
+
 //Rounds to three decimal places if applicable
 function round(answer) {
     if (answer.toString().includes('.')) {
@@ -33,8 +65,10 @@ function operate(operator, x, y) {
         case '—':
             return round(x - y);
         case '×':
+        case '*':
             return round(x * y);
         case '÷':
+        case '/':
             return round(x / y);
     }
 }
@@ -49,50 +83,8 @@ function allClear() {
     decimalBtn.disabled = false;
 }
 
-//BUTTON EVENT LISTENERS
-
-//Number buttons append their number to the current displayValue
-numberBtns.forEach(button => {
-    button.addEventListener('click', function() {
-        if (displayValue.length < 12) {
-            displayValue += button.textContent;
-            if (displayValue.includes('.')) { decimalBtn.disabled = true };
-            document.getElementById('display').textContent = displayValue;
-        } else if (displayValue.length > 12) {
-            alert("You've reached the number character limit.");
-        }
-    });
-});
-
-//Operator buttons assign firstNum, operator, reset the display value, and re-enable decimal button
-operatorBtns.forEach(button => {
-    button.addEventListener('click', function() {
-        if (operator !== '') {
-            secondNum = +displayValue;
-            displayValue = operate(operator, firstNum, secondNum);
-            document.getElementById('display').textContent = displayValue;
-        }
-        operator = button.textContent;   
-        firstNum = +displayValue;
-        displayValue = '';
-        decimalBtn.disabled = false;
-    });
-});
-
-//AC button calls allClear function
-allClearBtn.addEventListener('click', function() {
-    allClear();
-});
-
-//Backspace buttton deletes the last character in the display
-backspaceBtn.addEventListener('click', function(){
-    if (displayValue[displayValue.length - 1] === '.') { decimalBtn.disabled = false; }
-    displayValue = displayValue.slice(0, -1);
-    document.getElementById('display').textContent = displayValue;
-});
-
-//Equals button assigns secondNum a value and calls operate function
-equalsBtn.addEventListener('click', function(){
+//Computes a new display value (equals)
+function equals() {
     if (operator !== '') {
         secondNum = +displayValue;
         if ((operator === '/') && (secondNum === 0)) {
@@ -106,11 +98,44 @@ equalsBtn.addEventListener('click', function(){
             operator = '';
         }
     }
+}
+
+//BUTTON EVENT LISTENERS
+
+//Number buttons append their number to the current displayValue
+numberBtns.forEach(button => {
+    button.addEventListener('click', function() {
+        appendNumber(button.textContent);
+    });
 });
 
+//Backspace buttton deletes the last character in the display
+backspaceBtn.addEventListener('click', function(){
+    deleteLastChar()
+});
+
+//Operator buttons assign firstNum, operator, reset the display value, and re-enable decimal button
+operatorBtns.forEach(button => {
+    button.addEventListener('click', function() {
+        assignOperator(button.textContent);
+    });
+});
+
+//AC button calls allClear function
+allClearBtn.addEventListener('click', function() {
+    allClear();
+});
+
+//Equals button assigns secondNum a value and calls operate function
+equalsBtn.addEventListener('click', function(){
+    equals()
+});
 
 //Keyboard support
-
-// document.addEventListener('keydown', function(e) {
-//     if (e.key >= 0 && e.key <= 9) {console.log(e.key)};
-// });
+document.addEventListener('keydown', function(e) {
+    if ((e.key >= 0 && e.key <= 9) || ((e.key === '.')) && !displayValue.includes('.')) {appendNumber(e.key)};
+    if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') {assignOperator(e.key)};
+    if (e.key === 'Backspace') {deleteLastChar()};
+    if (e.key === 'Enter') {equals()};
+    if (e.key === 'c' || e.key === 'C') {allClear()}
+});
