@@ -107,3 +107,10 @@ equalsBtn.addEventListener('click', function(){
         }
     }
 });
+
+
+//Keyboard support
+
+// document.addEventListener('keydown', function(e) {
+//     if (e.key >= 0 && e.key <= 9) {console.log(e.key)};
+// });
