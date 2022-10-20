@@ -36,7 +36,7 @@ function deleteLastChar() {
 
 //Assigns operator a value
 
-function assignOperator(symbol) { //THIS NEEDS HELPPPPPPPPPPP
+function assignOperator(symbol) {
     if (operator !== '') {
         secondNum = +displayValue;
         displayValue = operate(operator, firstNum, secondNum);
@@ -87,7 +87,7 @@ function allClear() {
 function equals() {
     if (operator !== '') {
         secondNum = +displayValue;
-        if ((operator === '/') && (secondNum === 0)) {
+        if (((operator === '/') || operator === '÷') && (secondNum === 0)) {
             alert("You can't divide by zero!");
             allClear();
         } else {
