@@ -134,8 +134,8 @@ equalsBtn.addEventListener('click', function(){
 //Keyboard support
 document.addEventListener('keydown', function(e) {
     if ((e.key >= 0 && e.key <= 9) || ((e.key === '.')) && !displayValue.includes('.')) {appendNumber(e.key)};
-    if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') {assignOperator(e.key)};
     if (e.key === 'Backspace') {deleteLastChar()};
+    if (e.key === '/' || e.key === '*' || e.key === '-' || e.key === '+') {assignOperator(e.key)};
     if (e.key === 'Enter') {equals()};
     if (e.key === 'c' || e.key === 'C') {allClear()}
 });
