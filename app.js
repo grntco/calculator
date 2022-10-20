@@ -63,6 +63,7 @@ function operate(operator, x, y) {
         case '+':
             return round(x + y);
         case '—':
+        case '-':
             return round(x - y);
         case '×':
         case '*':
@@ -91,9 +92,8 @@ function equals() {
             alert("You can't divide by zero!");
             allClear();
         } else {
-            displayValue = operate(operator, firstNum, secondNum);
+            displayValue = operate(operator, firstNum, secondNum).toString();
             document.getElementById('display').textContent = displayValue;
-            displayValue = displayValue.toString();
             displayValue.includes('.') ? decimalBtn.disabled = true : decimalBtn.disabled = false;
             operator = '';
         }
