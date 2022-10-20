@@ -39,11 +39,11 @@ function deleteLastChar() {
 function assignOperator(symbol) {
     if (operator !== '') {
         secondNum = +displayValue;
-        displayValue = operate(operator, firstNum, secondNum);
+        displayValue = operate(operator, firstNum, secondNum).toString();
         document.getElementById('display').textContent = displayValue;
     }
     operator = symbol;
-    firstNum = +displayValue;
+    firstNum = +displayValue; 
     displayValue = '';
     decimalBtn.disabled = false;
 }
